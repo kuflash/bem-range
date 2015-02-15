@@ -1,0 +1,54 @@
+thumb-size = 15px;
+track-height = 10px;
+
+track() {
+  width: 100%;
+  height: track-height;
+  background: linear-gradient(#fcfcfc, #cccccc) repeat-y;
+  border-radius: track-height;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  background-size: 0% 100%;
+  background-clip: padding-box;
+}
+
+thumb() {
+  width: thumb-size;
+  height: thumb-size;
+  background: #bbb;
+  border-radius: (thumb-size / 2);
+  border: 1px solid #999;
+  margin-top: -((thumb-size - track-height) / 2) - 1;
+  cursor: pointer;
+}
+
+.range__control {
+
+  position: relative;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+  &::-webkit-slider-runnable-track {
+    track();
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    thumb();
+  }
+
+  &::-moz-range-track {
+    track();
+  }
+
+  &::-moz-range-thumb {
+    thumb();
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+}

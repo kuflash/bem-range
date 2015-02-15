@@ -1,0 +1,8 @@
+node_modules/
+.idea/
+
+# bem and libs
+libs/
+.enb/tmp/
+*.bundles*/*/*.*
+!*.bundles*/*/*.bemjson.js

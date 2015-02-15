@@ -1,0 +1,29 @@
+block('range')(
+
+	js()(true),
+
+	content()(function () {
+		return [
+			{
+				elem: 'box',
+				content: [
+					{
+						elem: 'control',
+						tag: 'input',
+						attrs: {
+							type: 'range',
+							min: 0,
+							max: 100
+						}
+					},
+					{
+						elem: 'tooltip'
+					}
+				]
+			},
+			{
+				elem: 'title'
+			}
+		];
+	})
+);
