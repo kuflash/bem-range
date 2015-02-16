@@ -8,7 +8,9 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 					inited: function () {
 						this.control = this.findElem('control');
 						this.bindTo('control', 'change', this._onChange, this);
-						this._updateFillTrack();
+						this.bindTo('control', 'mousedown', this._onMouseDown, this);
+						this.bindTo('control', 'mouseup', this._onMouseUp, this);
+						this.control.trigger('change');
 					}
 				}
 			},
@@ -18,26 +20,46 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			},
 
 			_updateFillTrack: function () {
-				var selectors = '';
-				var elemClass = this.control.attr('class').split(' ')[0];
-				var max = Number(this.control.attr('max'));
-				var min = Number(this.control.attr('min'));
-				var val = this.getVal();
-				var property = 'background-size:' + 100 * val / (max - min) + '% 100%';
-				var rule = "";
+				var selector 		= '';
+				var elemClass 	= this.control.attr('class').split(' ')[0];
+				var blockClass 	= this.domElem.attr('class').split(' ')[0];
+				var blockIndex 	= this.domElem.data('index');
+				var max 				= Number(this.control.attr('max'));
+				var min 				= Number(this.control.attr('min'));
+				var property 		= 'background-size:' + 100 * (this.getVal() - min) / (max - min) + '% 100%';
+				var rule 				= '';
+				var rules 			= '';
 
 				this.rangeSelectors.forEach(function (value, index) {
-					selectors = '.' + elemClass + value;
-					rule += selectors + '{' + property + '}';
+					selector = '.' + blockClass + '[data-index="' + blockIndex + '"] .' + elemClass + value;
+					rule += selector + '{' + property + '}';
 				}, this);
 
+				this.__self.cssRules[blockIndex] = rule;
+
 				$('style.range-styles').remove();
-				$('<style>', { class: 'range-styles' }).text(rule).appendTo('head');
+
+				for (var index in this.__self.cssRules) {
+					rules += this.__self.cssRules[index];
+				}
+
+				$('<style>', { class: 'range-styles' }).text(rules).appendTo('head');
 			},
 
 			_onChange: function (event) {
 				this._updateFillTrack();
+			},
+
+			_onMouseDown: function (event) {
+				this.bindTo('control', 'mousemove', this._onChange, this);
+			},
+
+			_onMouseUp: function (event) {
+				this.unbindFrom('control', 'mousemove', this._onChange);
 			}
+		},
+		{
+			cssRules: {}
 		}
 	));
 });

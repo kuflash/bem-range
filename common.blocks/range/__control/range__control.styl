@@ -4,12 +4,13 @@ track-height = 10px;
 track() {
   width: 100%;
   height: track-height;
-  background: linear-gradient(#fcfcfc, #cccccc) repeat-y;
+  background: linear-gradient(#fcfcfc, #e1e1e1), #fff;
   border-radius: track-height;
   border: 1px solid #ccc;
   box-sizing: border-box;
   background-size: 0% 100%;
   background-clip: padding-box;
+  background-repeat: repeat-y;
 }
 
 thumb() {
@@ -29,6 +30,7 @@ thumb() {
   padding: 10px;
   cursor: pointer;
   -webkit-appearance: none;
+  border-radius: 20px;
 
   &::-webkit-slider-runnable-track {
     track();
@@ -49,6 +51,8 @@ thumb() {
 
   &:focus {
     outline: none;
+    box-shadow: inset 0 0 3px #aaa;
+    background: #fafafa;
   }
 
 }

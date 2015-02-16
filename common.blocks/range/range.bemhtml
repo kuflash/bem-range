@@ -12,8 +12,8 @@ block('range')(
 						tag: 'input',
 						attrs: {
 							type: 'range',
-							min: 0,
-							max: 100
+							min: 20,
+							max: 80
 						}
 					},
 					{

@@ -9,7 +9,16 @@
 		],
     content: [
 			{
-				block: 'range'
+				block: 'range',
+				attrs: {
+					'data-index': 1
+				}
+			},
+			{
+				block: 'range',
+				attrs: {
+					'data-index': 2
+				}
 			}
     ]
 });
