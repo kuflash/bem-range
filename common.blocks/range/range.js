@@ -20,10 +20,7 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			},
 
 			_updateFillTrack: function () {
-				var selector 		= '';
-				var elemClass 	= this.control.attr('class').split(' ')[0];
-				var blockClass 	= this.domElem.attr('class').split(' ')[0];
-				var blockIndex 	= this.domElem.data('index');
+				var id 					= this.control.attr('id');
 				var max 				= Number(this.control.attr('max'));
 				var min 				= Number(this.control.attr('min'));
 				var property 		= 'background-size:' + 100 * (this.getVal() - min) / (max - min) + '% 100%';
@@ -31,19 +28,15 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 				var rules 			= '';
 
 				this.rangeSelectors.forEach(function (value, index) {
-					selector = '.' + blockClass + '[data-index="' + blockIndex + '"] .' + elemClass + value;
+					var selector = '#' + id + value;
 					rule += selector + '{' + property + '}';
 				}, this);
 
-				this.__self.cssRules[blockIndex] = rule;
+				this.__self.cssRules[id] = rule;
 
-				$('style.range-styles').remove();
+				for (var index in this.__self.cssRules) rules += this.__self.cssRules[index];
 
-				for (var index in this.__self.cssRules) {
-					rules += this.__self.cssRules[index];
-				}
-
-				$('<style>', { class: 'range-styles' }).text(rules).appendTo('head');
+				$('style.range-styles').text(rules);
 			},
 
 			_onChange: function (event) {
@@ -61,7 +54,12 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			}
 		},
 		{
-			cssRules: {}
+			cssRules: {},
+
+			live: function() {
+				if ($('head').has('style.range-styles')) $('<style>', { class: 'range-styles' }).appendTo('head');
+				return false;
+			}
 		}
 	));
 });

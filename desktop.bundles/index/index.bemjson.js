@@ -11,16 +11,16 @@
 			{
 				block: 'range',
 				title: 'Range 1',
-				attrs: {
-					'data-index': 1
-				}
+				min: 0,
+				max: 50,
+				tooltip: true
 			},
 			{
 				block: 'range',
-				title: 'Range 2',
-				attrs: {
-					'data-index': 2
-				}
+				title: 'Range 1',
+				min: 50,
+				max: 100,
+				tooltip: true
 			}
     ]
 });
