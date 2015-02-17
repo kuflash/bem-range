@@ -5,6 +5,12 @@ block('range')(
 	content()(function () {
 		return [
 			{
+				elem: 'title',
+				content: [
+					this.ctx.title
+				]
+			},
+			{
 				elem: 'box',
 				content: [
 					{
@@ -17,12 +23,10 @@ block('range')(
 						}
 					},
 					{
-						elem: 'tooltip'
+						elem: 'tooltip',
+						js: true
 					}
 				]
-			},
-			{
-				elem: 'title'
 			}
 		];
 	})

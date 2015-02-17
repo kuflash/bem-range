@@ -27,10 +27,14 @@ thumb() {
 
   position: relative;
   background: transparent;
-  padding: 10px;
+  margin: 0;
+  padding: 0.8em;
   cursor: pointer;
+  border-radius: 1.6em;
+  display: inline-block;
+  vertical-align: middle;
   -webkit-appearance: none;
-  border-radius: 20px;
+  transition: background 0.4s,  box-shadow 0.4s;
 
   &::-webkit-slider-runnable-track {
     track();

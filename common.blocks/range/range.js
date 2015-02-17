@@ -48,6 +48,8 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 
 			_onChange: function (event) {
 				this._updateFillTrack();
+				this.findElem('tooltip').text(this.getVal());
+				this.emit('change');
 			},
 
 			_onMouseDown: function (event) {

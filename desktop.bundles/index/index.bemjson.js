@@ -10,12 +10,14 @@
     content: [
 			{
 				block: 'range',
+				title: 'Range 1',
 				attrs: {
 					'data-index': 1
 				}
 			},
 			{
 				block: 'range',
+				title: 'Range 2',
 				attrs: {
 					'data-index': 2
 				}
