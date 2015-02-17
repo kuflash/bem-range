@@ -5,6 +5,10 @@ block('range').content()(
 		function() {
 			return {
 				elem: 'title',
+				tag: 'label',
+				attrs: {
+					for: this.generateId()
+				},
 				content: this.ctx.title
 			}
 		}
@@ -35,7 +39,8 @@ block('range').content()(
 			return [
 				applyNext(),
 				{
-					elem: 'tooltip'
+					elem: 'tooltip',
+					tag: 'span'
 				}
 			]
 		}
