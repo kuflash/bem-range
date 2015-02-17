@@ -1,25 +1,27 @@
-thumb-size = 15px;
-track-height = 10px;
+range-thumb-size = 15px;
+range-track-height = 10px;
 
-track() {
+range-track() {
   width: 100%;
-  height: track-height;
+  height: range-track-height;
   background: linear-gradient(#fcfcfc, #e1e1e1), #fff;
-  border-radius: track-height;
-  border: 1px solid #ccc;
+  border-radius: range-track-height;
+  border-color: #ccc;
+  border-width: 1px;
+  border-style: solid;
   box-sizing: border-box;
   background-size: 0% 100%;
   background-clip: padding-box;
   background-repeat: repeat-y;
 }
 
-thumb() {
-  width: thumb-size;
-  height: thumb-size;
+range-thumb() {
+  width: range-thumb-size;
+  height: range-thumb-size;
   background: #bbb;
-  border-radius: (thumb-size / 2);
+  border-radius: 50%;
   border: 1px solid #999;
-  margin-top: -((thumb-size - track-height) / 2) - 1;
+  margin-top: -((range-thumb-size - range-track-height) / 2) - 1;
   cursor: pointer;
 }
 
@@ -28,29 +30,51 @@ thumb() {
   position: relative;
   background: transparent;
   margin: 0;
-  padding: 0.8em;
+  padding: 0.8rem;
   cursor: pointer;
-  border-radius: 1.6em;
+  border-radius: 1.6rem;
   display: inline-block;
   vertical-align: middle;
   -webkit-appearance: none;
-  transition: background 0.4s,  box-shadow 0.4s;
+  transition: background 0.4s, box-shadow 0.4s;
 
   &::-webkit-slider-runnable-track {
-    track();
+    range-track();
   }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    thumb();
+    range-thumb();
   }
 
   &::-moz-range-track {
-    track();
+    range-track();
   }
 
   &::-moz-range-thumb {
-    thumb();
+    range-thumb();
+  }
+
+  &::-ms-track {
+    range-track();
+    color: transparent;
+    background: transparent;
+    height: range-track-height * 2 - 1;
+  }
+
+  &::-ms-thumb {
+    range-thumb();
+    margin-top: -((range-thumb-size - range-track-height) / 2) + 2;
+  }
+
+  &::-ms-fill-lower {
+    background: linear-gradient(#fcfcfc, #e1e1e1), #fff;
+    border-radius: range-track-height 0 0 range-track-height;
+  }
+
+  &::-ms-fill-upper {
+    background: #fff;
+    border-radius: 0 range-track-height range-track-height 0;
   }
 
   &:focus {
