@@ -57,7 +57,7 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			cssRules: {},
 
 			live: function() {
-				if ($('head').has('style.range-styles')) $('<style>', { class: 'range-styles' }).appendTo('head');
+				$('<style>', { class: 'range-styles' }).appendTo('head');
 				return false;
 			}
 		}
