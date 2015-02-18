@@ -40,7 +40,8 @@ block('range').content()(
 				applyNext(),
 				{
 					elem: 'tooltip',
-					tag: 'span'
+					tag: 'span',
+					js: true
 				}
 			]
 		}
