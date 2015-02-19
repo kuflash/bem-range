@@ -2,7 +2,6 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 	provide(BEMDOM.decl(this.name, {
 
 			trackSelectors: ['::-webkit-slider-runnable-track', '::-moz-range-track'],
-			thumbSelectors: ['::-webkit-slider-thumb', '::-ms-thumb', '::-moz-range-thumb'],
 
 			onSetMod: {
 				js: {
@@ -40,36 +39,28 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 				$('style.range-styles').text(rules);
 			},
 
-			_updateTooltipPosition: function () {
-				var rules = '';
-				var rule = '';
-				var property = 'content:"' + this.getVal() + '";';
-
-				this.thumbSelectors.forEach(function (value, index) {
-					var selector = '#' + this._id + ':focus' + value + ':after';
-					rule += selector + '{' + property + '}';
-				}, this);
-
-				this.__self.cssRules[this._id] += rule;
-
-				for (var index in this.__self.cssRules) rules += this.__self.cssRules[index];
-
-				$('style.range-styles').text(rules);
+			_updateTooltipPosition: function (event) {
+				if (event.offsetX > 0 && event.offsetX < this.control.width()) {
+					this.elem('value').css('left', event.clientX + 'px');
+				}
 			},
 
 			_onChange: function (event) {
 				this._updateFillTrack();
-				if (this.hasMod(this.elem('control'), 'show-tooltip', true)) this._updateTooltipPosition();
+				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this._updateTooltipPosition(event);
 				this.findElem('value').text(this.getVal());
 				this.emit('change');
 			},
 
 			_onMouseDown: function (event) {
 				this.bindTo('control', 'mousemove', this._onChange, this);
+				this._onChange(event);
+				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this.elem('value').show();
 			},
 
 			_onMouseUp: function (event) {
 				this.unbindFrom('control', 'mousemove', this._onChange);
+				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this.elem('value').hide();
 			}
 		},
 		{
