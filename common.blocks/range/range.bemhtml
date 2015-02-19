@@ -22,6 +22,7 @@ block('range').content()(
 			{
 				elem: 'control',
 				tag: 'input',
+				mods: { 'show-tooltip': true },
 				attrs: {
 					type: 'range',
 					id: this.generateId(),
@@ -34,14 +35,13 @@ block('range').content()(
 );
 
 block('range').content()(
-	match(this.ctx.tooltip)(
+	match(this.ctx.showValue)(
 		function() {
 			return [
 				applyNext(),
 				{
-					elem: 'tooltip',
-					tag: 'span',
-					js: true
+					elem: 'value',
+					tag: 'span'
 				}
 			]
 		}

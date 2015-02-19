@@ -1,6 +1,7 @@
 ({
 	mustDeps : { block : 'i-bem', elem : 'dom' },
 	shouldDeps: [
-		{ elems: ['control', 'title', 'tooltip'] }
+		{ elem: 'control', mods: { 'show-tooltip': true } },
+		{ elems: ['control', 'title', 'value'] }
 	]
 })
