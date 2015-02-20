@@ -1,7 +1,11 @@
+/**
+ * @module range
+ */
+
 modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) {
 	provide(BEMDOM.decl(this.name, {
 
-			trackSelectors: ['::-webkit-slider-runnable-track', '::-moz-range-track'],
+			_trackSelectors: ['::-webkit-slider-runnable-track', '::-moz-range-track'],
 
 			onSetMod: {
 				js: {
@@ -16,8 +20,22 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 				}
 			},
 
+			/**
+			 * Returns value of the input range
+			 * @returns {Number}
+			 */
 			getVal: function () {
 				return Number(this.control.val());
+			},
+
+			/**
+			 * Sets value to the input range
+			 * @param {Number} value
+			 * @returns {range} this
+			 */
+			setVal: function (value) {
+				this.control.val(Number(value));
+				return this;
 			},
 
 			_updateFillTrack: function () {
@@ -27,7 +45,7 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 				var rule 				= '';
 				var rules 			= '';
 
-				this.trackSelectors.forEach(function (value, index) {
+				this._trackSelectors.forEach(function (value, index) {
 					var selector = '#' + this._id + value;
 					rule += selector + '{' + property + '}';
 				}, this);
