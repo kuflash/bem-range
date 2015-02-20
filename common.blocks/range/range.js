@@ -8,9 +8,9 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 					inited: function () {
 						this.control = this.findElem('control');
 						this._id = this.control.attr('id');
-						this.bindTo('control', 'change', this._onChange, this);
-						this.bindTo('control', 'mousedown', this._onMouseDown, this);
-						this.bindTo('control', 'mouseup', this._onMouseUp, this);
+						this.bindTo('control', 'change', 		this._onChange, 		this);
+						this.bindTo('control', 'mousedown', this._onMouseDown, 	this);
+						this.bindTo('control', 'mouseup', 	this._onMouseUp, 		this);
 						this.control.trigger('change');
 					}
 				}
@@ -40,27 +40,31 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			},
 
 			_updateTooltipPosition: function (event) {
-				if (event.offsetX > 0 && event.offsetX < this.control.width()) {
-					this.elem('value').css('left', event.clientX + 'px');
+				var widthValue 	= this.elem('value').width();
+				var offsetX 		= event.offsetX || event.layerX;
+
+				if (offsetX - widthValue > 0 && offsetX  < this.control.width()) {
+					var coor = event.clientX - (widthValue * 2);
+					this.elem('value').css('left', coor + 'px');
 				}
 			},
 
 			_onChange: function (event) {
-				this._updateFillTrack();
-				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this._updateTooltipPosition(event);
+				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this._updateTooltipPosition(event.originalEvent);
 				this.findElem('value').text(this.getVal());
+				this._updateFillTrack();
 				this.emit('change');
 			},
 
 			_onMouseDown: function (event) {
+				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this.elem('value').show();
 				this.bindTo('control', 'mousemove', this._onChange, this);
 				this._onChange(event);
-				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this.elem('value').show();
 			},
 
 			_onMouseUp: function (event) {
-				this.unbindFrom('control', 'mousemove', this._onChange);
 				if (this.hasMod(this.elem('value'), 'type', 'tooltip')) this.elem('value').hide();
+				this.unbindFrom('control', 'mousemove', this._onChange);
 			}
 		},
 		{
