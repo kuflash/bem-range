@@ -1,0 +1,159 @@
+range-thumb-size = 15px;
+range-track-height = 10px;
+bg-island = #ffdb4d;
+border-island = rgba(191, 153, 0, 0.8);
+
+range-track() {
+  height: range-track-height;
+  background: linear-gradient(bg-island, bg-island), #fff;
+  border-radius: range-track-height;
+  border-color: border-island;
+  background-repeat: repeat-y;
+}
+
+range-thumb() {
+  width: range-thumb-size;
+  height: range-thumb-size;
+  background: #fff;
+  border: 1px solid border-island;
+  margin-top: -((range-thumb-size - range-track-height) / 2) - 1;
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+.range_theme_island
+
+  /* THEME FOR CONTROL */
+
+  .range__control {
+    padding: 0;
+    &::-webkit-slider-runnable-track {
+      range-track();
+    }
+
+    &::-webkit-slider-thumb {
+      range-thumb();
+    }
+
+    &::-moz-range-track {
+      range-track();
+    }
+
+    &::-moz-range-thumb {
+      range-thumb();
+    }
+
+    &::-ms-track {
+      range-track();
+      color: transparent;
+      background: transparent;
+      height: range-track-height * 2 - 1;
+    }
+
+    &::-ms-thumb {
+      range-thumb();
+      margin-top: -((range-thumb-size - range-track-height) / 2) + 3;
+    }
+
+    &::-ms-fill-lower {
+      background: linear-gradient(bg-island, bg-island), #fff;
+      border-radius: range-track-height 0 0 range-track-height;
+    }
+
+    &::-ms-fill-upper {
+      background: #fff;
+      border-radius: 0 range-track-height range-track-height 0;
+    }
+
+    &::-ms-tooltip {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      background: transparent;
+      border: 1px solid bg-island;
+    }
+  }
+
+  /* THEME FOR STATIC VALUE */
+
+  .range__value_type_static {
+    border: 1px solid border-island;
+    background: #fff;
+    border-radius: 3px;
+    padding: 2px 5px;
+    min-width: 28px;
+    box-sizing: border-box;
+    text-align: center;
+
+    /* STYLES FOR LEFT ARROW  */
+
+    &:after,
+    &:before {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: transparent;
+      border-right-color: #fff;
+      border-width: 5px;
+      margin-top: -5px;
+    }
+
+    &:before {
+      border-color: transparent;
+      border-right-color: border-island;
+      border-width: 6px;
+      margin-top: -6px;
+    }
+  }
+
+  /* THEME FOR TOOLTIP VALUE */
+
+  .range__value_type_tooltip {
+    border: 1px solid border-island;
+    background: #fff;
+    border-radius: 3px;
+    padding: 2px 5px;
+    min-width: 28px;
+    box-sizing: border-box;
+    text-align: center;
+
+    /* STYLES FOR UP ARROW  */
+
+    &:after,
+    &:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: transparent;
+      border-bottom-color: #fff;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+
+    &:before {
+      border-color: transparent;
+      border-bottom-color: border-island;
+      border-width: 6px;
+      margin-left: -6px;
+    }
+  }
