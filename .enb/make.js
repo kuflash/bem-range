@@ -87,7 +87,7 @@ function getDesktops(config) {
         { path: 'libs/bem-core/common.blocks', check: false },
         { path: 'libs/bem-core/desktop.blocks', check: false },
         'common.blocks',
-        'desktop.blocks'
+        'demo.blocks'
     ].map(function (level) {
         return config.resolvePath(level);
     });
