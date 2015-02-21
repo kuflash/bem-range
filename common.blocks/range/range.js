@@ -59,11 +59,11 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 
 			_updateTooltipPosition: function (event) {
 				if (event) {
-					var widthValue = this.elem('value').width();
+					var widthValue = this.elem('value').outerWidth();
+					var diffWidth = this.control.outerWidth() - this.control.width();
 					var offsetX = event.offsetX || event.layerX;
-
-					if (offsetX - widthValue > 0 && offsetX < this.control.width()) {
-						var coor = event.clientX - (widthValue * 2);
+					if (offsetX - diffWidth > 0 && offsetX < this.control.outerWidth()) {
+						var coor = offsetX - widthValue;
 						this.elem('value').css('left', coor + 'px');
 					}
 				}

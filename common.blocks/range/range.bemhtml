@@ -1,49 +1,35 @@
-block('range')(js()(true));
-
-block('range').content()(
-	match(this.ctx.title)(
-		function() {
-			return {
-				elem: 'title',
-				tag: 'label',
-				attrs: {
-					for: this.generateId()
-				},
-				content: this.ctx.title
+block('range')(
+	js()(true),
+	def()(function(){
+		applyNext({_range: this.ctx});
+	}),
+	content()(
+		match(this.ctx.title)(
+			function() {
+				return [
+					{
+						elem: 'title',
+						tag: 'label',
+						attrs: {
+							for: this.generateId()
+						},
+						content: this.ctx.title
+					},
+					{
+						elem: 'box',
+						content: {
+							elem: 'control',
+							tag: 'input',
+							attrs: {
+								type: 'range',
+								id: this.generateId(),
+								min: this.ctx.min || 0,
+								max: this.ctx.max || 100
+							}
+						}
+					}
+				]
 			}
-		}
-	)
-);
-
-block('range').content()(
-	function() {
-		return [
-			applyNext(),
-			{
-				elem: 'control',
-				tag: 'input',
-				attrs: {
-					type: 'range',
-					id: this.generateId(),
-					min: this.ctx.min || 0,
-					max: this.ctx.max || 100
-				}
-			}
-		]
-	}
-);
-
-block('range').content()(
-	match(this.ctx.value)(
-		function() {
-			return [
-				applyNext(),
-				{
-					elem: 'value',
-					tag: 'span',
-					mods: this.ctx.value
-				}
-			]
-		}
+		)
 	)
 );

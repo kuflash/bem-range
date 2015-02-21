@@ -1,0 +1,14 @@
+block('range').elem('box')(
+	content()(match(this._range.value)(
+		function() {
+			return [
+				applyNext(),
+				{
+					elem: 'value',
+					tag: 'span',
+					mods: this._range.value
+				}
+			]
+		}
+	))
+)
