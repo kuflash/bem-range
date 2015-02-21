@@ -27,17 +27,14 @@ range-thumb() {
 }
 
 .range__control {
-
   position: relative;
   background: transparent;
   margin: 0;
-  padding: 0.8rem;
   cursor: pointer;
   border-radius: 1.6rem;
   display: inline-block;
   vertical-align: middle;
   -webkit-appearance: none;
-  transition: background 0.4s, box-shadow 0.4s;
 
   &::-webkit-slider-runnable-track {
     range-track();
@@ -83,8 +80,7 @@ range-thumb() {
 
   &:focus {
     outline: none;
-    box-shadow: inset 0 0 3px #aaa;
-    background: #fafafa;
+    box-shadow: 0 0 3px #aaa;
   }
 
 }
