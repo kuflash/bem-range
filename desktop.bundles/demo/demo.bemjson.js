@@ -31,7 +31,8 @@
 							elem: 'item',
 							tag: 'a',
 							attrs: {
-								href: 'https://github.com/kuflash/bem-range'
+								href: 'https://github.com/kuflash/bem-range',
+								target: '_blank'
 							},
 							content: "Посмотреть на GitHub"
 						},
@@ -39,7 +40,8 @@
 							elem: 'item',
 							tag: 'a',
 							attrs: {
-								href: 'https://github.com/kuflash/bem-range/wiki'
+								href: 'https://github.com/kuflash/bem-range/wiki/Documentation',
+								target: '_blank'
 							},
 							content: "Документация"
 						}
@@ -83,7 +85,7 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "Обычный вид",
+													content: "Обычный вид:",
 												},
 												{
 													block: 'range',
@@ -99,13 +101,13 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "С отображение текущего значения",
+													content: "С отображение текущего значения:",
 												},
 												{
 													block: 'range',
 													mix: [ { block: 'variants', elem: 'control' } ],
 													title: 'Выберите значение:',
-													value: { type: 'static' }
+													displayedValue: { type: 'static' }
 												}
 											]
 										},
@@ -116,13 +118,13 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "С тултипом",
+													content: "С тултипом:",
 												},
 												{
 													block: 'range',
 													mix: [ { block: 'variants', elem: 'control' } ],
 													title: 'Выберите значение:',
-													value: { type: 'tooltip' }
+													displayedValue: { type: 'tooltip' }
 												}
 											]
 										}
@@ -152,13 +154,13 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "Обычный вид",
+													content: "Обычный вид:",
 												},
 												{
 													block: 'range',
 													mix: [ { block: 'variants', elem: 'control' } ],
 													title: 'Выберите значение:',
-													mods: { theme: 'island' }
+													mods: { theme: 'islands' }
 												}
 											]
 										},
@@ -169,14 +171,14 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "С отображение текущего значения",
+													content: "С отображение текущего значения:",
 												},
 												{
 													block: 'range',
 													mix: [ { block: 'variants', elem: 'control' } ],
 													title: 'Выберите значение:',
-													value: { type: 'static' },
-													mods: { theme: 'island' }
+													displayedValue: { type: 'static' },
+													mods: { theme: 'islands' }
 												}
 											]
 										},
@@ -187,14 +189,14 @@
 												{
 													elem: 'header',
 													tag: 'h3',
-													content: "С тултипом",
+													content: "С тултипом:",
 												},
 												{
 													block: 'range',
 													mix: [ { block: 'variants', elem: 'control' } ],
 													title: 'Выберите значение:',
-													value: { type: 'tooltip' },
-													mods: { theme: 'island' }
+													displayedValue: { type: 'tooltip' },
+													mods: { theme: 'islands' }
 												}
 											]
 										}
