@@ -13,14 +13,16 @@
 				title: 'Range 1',
 				min: 0,
 				max: 50,
-				value: { type: 'static' }
+				val: 40,
+				displayedValue: { type: 'static' }
 			},
 			{
 				block: 'range',
 				title: 'Range 1',
 				min: 50,
 				max: 100,
-				value: { type: 'tooltip' }
+				val: 60,
+				displayedValue: { type: 'tooltip' }
 			}
     ]
 });

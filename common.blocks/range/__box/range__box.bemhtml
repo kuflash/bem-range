@@ -1,12 +1,12 @@
 block('range').elem('box')(
-	content()(match(this._range.value)(
+	content()(match(this._range.displayedValue)(
 		function() {
 			return [
 				applyNext(),
 				{
 					elem: 'value',
 					tag: 'span',
-					mods: this._range.value
+					mods: this._range.displayedValue
 				}
 			]
 		}

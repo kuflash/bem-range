@@ -24,7 +24,8 @@ block('range')(
 								type: 'range',
 								id: this.generateId(),
 								min: this.ctx.min || 0,
-								max: this.ctx.max || 100
+								max: this.ctx.max || 100,
+								value: this.ctx.val
 							}
 						}
 					}
