@@ -1,0 +1,98 @@
+/*
+  Thank you Ana Tudor for showing ways styling component.
+  A Collection sliders by Ana Tudor: http://codepen.io/collection/DgYaMj/
+*/
+
+modern-input-height = 2.25em;
+modern-input-padding = 0.625em;
+modern-input-border-width = 0.0625em;
+
+modern-track-height = modern-input-height - (modern-input-padding + modern-input-border-width) * 2;
+
+modern-track-bg = linear-gradient(#111, #262626);
+modern-track-fill =  linear-gradient(#98cdf6, #27699c) no-repeat;
+
+modern-thumb-d = 1.25em;
+
+track(fill = true) {
+  height: modern-track-height;
+  border-radius: (modern-track-height / 2);
+  background: modern-track-bg;
+
+  if fill {
+    background: modern-track-fill, modern-track-bg;
+    background-size: 50% 100%;
+  }
+
+}
+
+thumb() {
+  box-sizing: border-box;
+  border: solid modern-input-border-width #000;
+  width: modern-thumb-d;
+  height: modern-thumb-d;
+  border-radius: 50%;
+  box-shadow:
+    0 .125em .25em #000,
+    inset 0 .125em .25em #777,
+    inset 0 -.125em .25em #222,
+    inset 0 -.25em .25em #111,
+    inset 0 -.375em .25em #333,
+    inset 0 0 0 (modern-thumb-d / 4) #333,
+    inset 0 1px 1px (modern-thumb-d / 4) #111;
+  background: linear-gradient(#99c0df, #0082e7, #3293de) no-repeat 50% 50% #000;
+  background-size: 56% 56%;
+}
+
+.range_theme_modern
+
+  .range__control {
+
+    position: relative;
+    background: modern-track-fill;
+    padding: 0 modern-input-padding;
+    height: modern-input-height;
+    border: solid modern-input-border-width #98cdf6;
+    border-radius: (modern-input-height / 2);
+    background: linear-gradient(#414141, #313131 50%, #282828 50%, #141414) border-box;
+    cursor: pointer;
+
+    &,
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb {
+       -webkit-appearance: none;
+    }
+    &::-webkit-slider-runnable-track {
+      -webkit-appearance: none;
+      track();
+    }
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      margin-top: ((modern-track-height - modern-thumb-d) / 2);
+      thumb();
+    }
+
+    &::-moz-range-track {
+      track();
+    }
+
+    &::-moz-range-thumb {
+      thumb();
+    }
+
+    &::-ms-track {
+      track(false);
+      color: transparent;
+    }
+    &::-ms-thumb {
+      thumb();
+    }
+    &::-ms-fill-lower {
+      border-radius: modern-track-height;
+      background: modern-track-fill;
+    }
+    &::-ms-tooltip {
+      display: none;
+    }
+
+  }
