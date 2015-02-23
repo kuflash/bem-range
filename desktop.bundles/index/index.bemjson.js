@@ -13,16 +13,25 @@
 				title: 'Range 1',
 				min: 0,
 				max: 50,
-				val: 40,
-				displayedValue: { type: 'static' }
+				val: 40
 			},
 			{
 				block: 'range',
+				mods: { theme: 'modern' },
 				title: 'Range 1',
-				min: 50,
-				max: 100,
-				val: 60,
-				displayedValue: { type: 'tooltip' }
-			}
+				displayedValue: { type: 'static' },
+				min: 0,
+				max: 50,
+				val: 40
+			},
+			{
+				block: 'range',
+				mods: { theme: 'modern' },
+				title: 'Range 1',
+				displayedValue: { type: 'tooltip' },
+				min: 0,
+				max: 50,
+				val: 40
+			},
     ]
 });
