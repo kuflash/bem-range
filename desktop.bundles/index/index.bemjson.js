@@ -26,7 +26,7 @@
 			},
 			{
 				block: 'range',
-				mods: { theme: 'modern' },
+				mods: { theme: 'islands' },
 				title: 'Range 1',
 				displayedValue: { type: 'tooltip' },
 				min: 0,
