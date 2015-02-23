@@ -41,7 +41,7 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 			_updateFillTrack: function () {
 				var max 				= Number(this.control.attr('max'));
 				var min 				= Number(this.control.attr('min'));
-				var property 		= 'background-size:' + 100 * (this.getVal() - min) / (max - min) + '% 100%';
+				var property 		= 'background-size:' + 100 * (this.getVal() - min) / (max - min) + '% 100%, 100% 100%';
 				var rule 				= '';
 				var rules 			= '';
 
@@ -62,7 +62,7 @@ modules.define('range', ['i-bem__dom', 'jquery'], function (provide, BEMDOM, $) 
 					var widthValue = this.elem('value').outerWidth();
 					var diffWidth = this.control.outerWidth() - this.control.width();
 					var offsetX = event.offsetX || event.layerX;
-					if (offsetX - diffWidth > 0 && offsetX < this.control.outerWidth()) {
+					if (offsetX - diffWidth > 0 && offsetX + diffWidth / 2 < this.control.outerWidth()) {
 						var coor = offsetX - widthValue;
 						this.elem('value').css('left', coor + 'px');
 					}
