@@ -1,87 +1,110 @@
-range-thumb-size = 15px;
-range-track-height = 10px;
-bg-island = #ffdb4d;
-border-island = rgba(191, 153, 0, 0.8);
 
-range-track() {
-  height: range-track-height;
-  background: linear-gradient(bg-island, bg-island), #fff;
-  border-radius: range-track-height;
-  border-color: border-island;
-  background-repeat: repeat-y;
+/*
+  Thank you Ana Tudor for showing ways styling component.
+  A Collection sliders by Ana Tudor: http://codepen.io/collection/DgYaMj/
+*/
+
+islands-input-height = 2.25em;
+islands-input-padding = 0.825em;
+islands-input-border-width = 0.09em;
+
+islands-track-height = islands-input-height - (islands-input-padding + islands-input-border-width) * 2;
+
+islands-track-bg = linear-gradient(#ccc, #ddd);
+islands-track-fill =  linear-gradient(#ffdb4d, #ffdb4d) no-repeat;
+
+islands-thumb-d = 1.1em;
+
+track(fill = true) {
+  height: islands-track-height;
+  border-radius: (islands-track-height / 4);
+  background: islands-track-bg;
+
+if fill {
+  background: islands-track-fill, islands-track-bg;
+  background-size: 50% 100%;
 }
 
-range-thumb() {
-  width: range-thumb-size;
-  height: range-thumb-size;
+}
+
+thumb() {
+  box-sizing: border-box;
+  border: solid islands-input-border-width #ffdb4d;
+  width: islands-thumb-d;
+  height: islands-thumb-d;
+  border-radius: 50%;
   background: #fff;
-  border: 1px solid border-island;
-  margin-top: -((range-thumb-size - range-track-height) / 2) - 1;
-  &:hover {
-    background: #f5f5f5;
-  }
+  box-shadow: inset 0 0 0.3em #ffdb4d;
 }
 
 .range_theme_islands
 
-  /* THEME FOR CONTROL */
-
   .range__control {
-    padding: 0;
-    &::-webkit-slider-runnable-track {
-      range-track();
-    }
 
+    position: relative;
+    padding: 0 islands-input-padding;
+    height: islands-input-height;
+    border: solid islands-input-border-width #e4e4e4;
+    border-radius: (islands-input-height / 8);
+    background: linear-gradient(#fcfcfc, #eee) border-box;
+    cursor: pointer;
+
+    &,
+    &::-webkit-slider-runnable-track,
     &::-webkit-slider-thumb {
-      range-thumb();
+      -webkit-appearance: none;
+    }
+    &::-webkit-slider-runnable-track {
+      track();
+    }
+    &::-webkit-slider-thumb {
+      margin-top: ((islands-track-height - islands-thumb-d) / 2);
+      thumb();
     }
 
     &::-moz-range-track {
-      range-track();
+      track();
     }
 
     &::-moz-range-thumb {
-      range-thumb();
+      thumb();
     }
 
     &::-ms-track {
-      range-track();
       color: transparent;
-      background: transparent;
-      height: range-track-height * 2 - 1;
+      border: none;
+      track(false);
     }
-
     &::-ms-thumb {
-      range-thumb();
-      margin-top: -((range-thumb-size - range-track-height) / 2) + 3;
+      thumb();
     }
-
     &::-ms-fill-lower {
-      background: linear-gradient(bg-island, bg-island), #fff;
-      border-radius: range-track-height 0 0 range-track-height;
+      border-radius: islands-track-height;
+      background: islands-track-fill;
     }
-
-    &::-ms-fill-upper {
-      background: #fff;
-      border-radius: 0 range-track-height range-track-height 0;
-    }
-
     &::-ms-tooltip {
       display: none;
     }
 
     &:focus {
       outline: none;
-      box-shadow: none;
-      background: transparent;
-      border: 1px solid bg-island;
+      box-shadow: 0 0 1em #ffdb4d;
+
+      &::-webkit-slider-thumb {
+         box-shadow: 0 0 1em #ffdb4d;
+      }
+      &::-moz-range-thumb {
+         box-shadow: 0 0 1em #ffdb4d;
+      }
+      &::-ms-thumb {
+         box-shadow: 0 0 1em #ffdb4d;
+      }
     }
+
   }
 
-  /* THEME FOR STATIC VALUE */
-
   .range__value_type_static {
-    border: 1px solid border-island;
+    border: solid islands-input-border-width #e4e4e4;
     background: #fff;
     border-radius: 3px;
     padding: 2px 5px;
@@ -112,22 +135,21 @@ range-thumb() {
 
     &:before {
       border-color: transparent;
-      border-right-color: border-island;
+      border-right-color: #e4e4e4;
       border-width: 6px;
       margin-top: -6px;
     }
   }
 
-  /* THEME FOR TOOLTIP VALUE */
-
   .range__value_type_tooltip {
-    border: 1px solid border-island;
+    border: 1px solid #e4e4e4;
     background: #fff;
     border-radius: 3px;
+    padding: 2px 5px;
+    min-width: 28px;
     box-sizing: border-box;
     text-align: center;
-
-    /* STYLES FOR UP ARROW  */
+    box-shadow: 0 0 1em #ffdb4d;
 
     &:after,
     &:before {
@@ -150,8 +172,9 @@ range-thumb() {
 
     &:before {
       border-color: transparent;
-      border-bottom-color: border-island;
+      border-bottom-color: #e4e4e4;
       border-width: 6px;
       margin-left: -6px;
     }
   }
+
