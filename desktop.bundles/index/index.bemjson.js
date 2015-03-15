@@ -18,7 +18,6 @@
 			{
 				block: 'range',
 				mods: { theme: 'modern' },
-				title: 'Range 1',
 				displayedValue: { type: 'static' },
 				min: 0,
 				max: 50,

@@ -14,23 +14,31 @@ block('range')(
 							for: this.generateId()
 						},
 						content: this.ctx.title
-					},
-					{
-						elem: 'box',
-						content: {
-							elem: 'control',
-							tag: 'input',
-							attrs: {
-								type: 'range',
-								id: this.generateId(),
-								min: this.ctx.min || 0,
-								max: this.ctx.max || 100,
-								value: this.ctx.val
-							}
-						}
 					}
 				]
 			}
 		)
+	),
+	content()(
+		function () {
+			return [
+				applyNext(),
+				{
+					elem: 'box',
+					content: {
+						elem: 'control',
+						tag: 'input',
+						attrs: {
+							type: 'range',
+							id: this.generateId(),
+							min: this.ctx.min || 0,
+							max: this.ctx.max || 100,
+							value: this.ctx.val
+						}
+					}
+				}
+			]
+		}
+
 	)
 );
