@@ -140,6 +140,6 @@
     min: 50,
     max: 100,
     val: 60,
-    displayedValue: { type: 'tootip' }
+    displayedValue: { type: 'tooltip' }
 }
 ```
